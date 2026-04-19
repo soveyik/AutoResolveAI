@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - AutoResolve</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-background">
+    <nav class="glass-navbar">
+      <div class="logo-box">
+        <h1>AutoResolve</h1>
+      </div>
+      <div class="user-profile">
+        <span style="color: var(--accent-blue); font-weight:bold;">Agent Dashboard</span>
+        <button id="logout-btn" class="icon-button" style="margin-left:1rem; border-color: #ef4444; color: #ef4444;">Logout</button>
+      </div>
+    </nav>
+    <main class="dashboard-container">
+      <section class="glass-panel analytics-panel" style="flex: 1;">
+        <div class="analytics-header">
+          <h2>Active Queue (<span id="ticket-count">0</span>)</h2>
+          <button id="refresh-btn" class="icon-button glow-button" style="width: auto; margin:0;">Refresh ↻</button>
+        </div>
+        <div class="ticket-list-wrapper">
+          <ul id="ticket-list" class="ticket-list">
+            <!-- Dynamically populated via JS -->
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>

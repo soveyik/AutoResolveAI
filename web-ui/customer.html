@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Portal - AutoResolve</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-background">
+    <nav class="glass-navbar">
+      <div class="logo-box">
+        <h1>AutoResolve</h1>
+      </div>
+      <div class="user-profile">
+        <span>Customer Portal</span>
+        <button id="logout-btn" class="icon-button" style="margin-left:1rem; border-color: #ef4444; color: #ef4444;">Logout</button>
+      </div>
+    </nav>
+    <main class="dashboard-container" style="justify-content: center;">
+      <section class="glass-panel create-panel" style="max-width: 600px; flex: none; width: 100%;">
+        <h2>Create a Support Ticket</h2>
+        <p class="subtitle">Briefly describe your issue and our team will get back to you shortly.</p>
+        <form id="ticket-form">
+          <div class="input-group">
+            <label for="title">Subject</label>
+            <input type="text" id="title" placeholder="e.g., Billing Issue, Late Delivery" required>
+          </div>
+          <div class="input-group">
+            <label for="description">Detailed Description</label>
+            <textarea id="description" rows="5" placeholder="Please elaborate..." required></textarea>
+          </div>
+          <button type="submit" class="glow-button" id="submit-btn" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+            Submit Ticket
+          </button>
+        </form>
+        <div id="success-msg" style="display:none; color: var(--normal); margin-top: 1rem; text-align: center; font-weight: 500;">
+          Ticket submitted successfully!
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="customer.js"></script>
+</body>
+</html>

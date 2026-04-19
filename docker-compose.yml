@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL (Ana Veritabanımız)
+  postgres:
+    image: postgres:15-alpine
+    container_name: autoresolve_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: autoresolve
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # 2. Redis (Geçici Hafıza / Önbellek)
+  redis:
+    image: redis:7-alpine
+    container_name: autoresolve_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # 3. RabbitMQ (Mesaj Kuyruğu / Postacı)
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: autoresolve_rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password123
+    ports:
+      - "5672:5672"   # Uygulamaların bağlanacağı port
+      - "15672:15672" # Tarayıcıdan izleyebileceğimiz arayüz portu
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
