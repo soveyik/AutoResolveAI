@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "index.html";
     }
 
-    const API_URL = "http://localhost:3000/tickets";
+    const API_URL = "http://127.0.0.1:3000/tickets";
     const refreshBtn = document.getElementById("refresh-btn");
     const ticketList = document.getElementById("ticket-list");
     const ticketCount = document.getElementById("ticket-count");
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ticketCount.textContent = tickets.length;
 
             if (tickets.length === 0) {
-                ticketList.innerHTML = '<p style="text-align:center;">Queue is empty.</p>';
+                ticketList.innerHTML = '<p style="text-align:center;">Bekleyen bilet bulunmuyor.</p>';
                 return;
             }
 
@@ -45,14 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <p class="card-body">"${ticket.description}"</p>
                     <div class="card-footer">
-                        <span>Ticket ID: #${ticket.id.slice(0, 8)}</span>
-                        <span>Date: ${new Date(ticket.createdAt).toLocaleString()}</span>
+                        <span>Bilet No: #${ticket.id.slice(0, 8)}</span>
+                        <span>Tarih: ${new Date(ticket.createdAt).toLocaleString()}</span>
                     </div>
                 `;
                 ticketList.appendChild(li);
             });
         } catch (error) {
-            ticketList.innerHTML = '<p style="color: red; text-align: center;">Network error while fetching tickets.</p>';
+            ticketList.innerHTML = '<p style="color: red; text-align: center;">Biletler yüklenirken ağ hatası oluştu.</p>';
         }
     }
 

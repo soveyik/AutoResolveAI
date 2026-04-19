@@ -23,7 +23,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USER=admin
 DB_PASSWORD=admin
-DB_NAME=ticket_db
+DB_NAME=autoresolve
 
 RABBITMQ_URL=amqp://admin:password123@localhost:5672
 JWT_SECRET=your_super_secret_jwt_key

@@ -4,8 +4,10 @@ export declare class AuthController {
     constructor(authService: AuthService);
     register(body: any): Promise<{
         message: string;
+        userId: string;
     }>;
     login(body: any): Promise<{
         access_token: string;
+        role: string;
     }>;
 }

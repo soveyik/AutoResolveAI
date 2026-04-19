@@ -22,10 +22,14 @@ export class AuthService {
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(passwordPlain, salt);
 
+    // Otomatik Rol Ataması: Eğer eklide 'admin' geçiyorsa admin yap
+    const role = email.toLowerCase().includes('admin') ? 'admin' : 'customer';
+
     const user = this.userRepository.create({
       fullName,
       email,
       passwordHash,
+      role
     });
 
     await this.userRepository.save(user);

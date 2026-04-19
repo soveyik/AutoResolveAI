@@ -15,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
       port: 5432,
       username: 'admin',
       password: 'password123',
-      database: 'ticket_db',
+      database: 'autoresolve',
       autoLoadEntities: true,
       synchronize: true, 
     }),

@@ -9,10 +9,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TicketsModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const microservices_1 = require("@nestjs/microservices");
+const ticket_entity_1 = require("./entities/ticket.entity");
 const tickets_service_1 = require("./tickets.service");
 const tickets_controller_1 = require("./tickets.controller");
-const ticket_entity_1 = require("./entities/ticket.entity");
+const microservices_1 = require("@nestjs/microservices");
 let TicketsModule = class TicketsModule {
 };
 exports.TicketsModule = TicketsModule;
@@ -22,13 +22,13 @@ exports.TicketsModule = TicketsModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([ticket_entity_1.Ticket]),
             microservices_1.ClientsModule.register([
                 {
-                    name: 'AI_SERVICE',
+                    name: 'BACKGROUND_WORKER',
                     transport: microservices_1.Transport.RMQ,
                     options: {
-                        urls: [process.env.RABBITMQ_URL || 'amqp://admin:password123@localhost:5672'],
+                        urls: ['amqp://admin:password123@localhost:5672'],
                         queue: 'ticket_created_queue',
                         queueOptions: {
-                            durable: true
+                            durable: true,
                         },
                     },
                 },

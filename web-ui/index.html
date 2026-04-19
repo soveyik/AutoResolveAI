@@ -1,32 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>AutoResolve</title>
+  <title>AutoResolve - Giriş</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="login-wrapper">
     <div class="glass-panel login-panel">
-      <div class="logo-box" style="justify-content: center; margin-bottom: 2rem;">
+      
+      <div class="logo-box" style="justify-content: center; margin-bottom: 1rem;">
         <h1 style="text-align: center;">AutoResolve</h1>
       </div>
-      <p class="subtitle" style="text-align: center; margin-bottom: 2rem;">Ticketing System Authentication</p>
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <button id="btn-customer" class="glow-button" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
-          Access as Customer
-        </button>
-        <button id="btn-admin" class="glow-button" style="background: linear-gradient(135deg, #be123c, #881337);">
-          Access as Agent
-        </button>
-        <div id="admin-pass-container" style="display: none; flex-direction: column; gap: 0.5rem;">
-          <input type="password" id="admin-password" placeholder="Password" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; outline: none;">
-          <button id="btn-admin-login" class="glow-button" style="background: linear-gradient(135deg, #ea580c, #c2410c);">
-            Verify
-          </button>
-        </div>
+      <p class="subtitle" style="text-align: center; margin-bottom: 2rem;">Müşteri Destek Sistemi</p>
+      
+      <!-- Tab Switcher -->
+      <div class="tab-switcher">
+        <button id="tab-login" class="tab-btn active">Giriş Yap</button>
+        <button id="tab-register" class="tab-btn">Kayıt Ol</button>
       </div>
+
+      <!-- Login Form -->
+      <form id="form-login" class="auth-form">
+        <div class="input-group">
+          <label>E-Posta Adresi</label>
+          <input type="email" id="login-email" required>
+        </div>
+        <div class="input-group">
+          <label>Şifre</label>
+          <input type="password" id="login-password" required>
+        </div>
+        <button type="submit" class="glow-button" style="background: linear-gradient(135deg, #1e293b, #0f172a);">Giriş Yap</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="form-register" class="auth-form" style="display: none;">
+        <div class="input-group">
+          <label>Ad Soyad</label>
+          <input type="text" id="reg-name" required>
+        </div>
+        <div class="input-group">
+          <label>E-Posta Adresi</label>
+          <input type="email" id="reg-email" required>
+        </div>
+        <div class="input-group">
+          <label>Şifre</label>
+          <input type="password" id="reg-password" required>
+        </div>
+        <button type="submit" class="glow-button" style="background: linear-gradient(135deg, #2563eb, #1d4ed8);">Hesap Oluştur</button>
+      </form>
+      
+      <div id="auth-error" style="color:var(--urgent); font-weight:bold; font-size: 0.85rem; text-align:center; display:none; margin-top:1rem;"></div>
+
     </div>
   </div>
   <script src="login.js"></script>

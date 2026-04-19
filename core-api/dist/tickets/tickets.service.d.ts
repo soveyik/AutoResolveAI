@@ -1,11 +1,10 @@
-import { ClientProxy } from '@nestjs/microservices';
 import { Repository } from 'typeorm';
 import { Ticket } from './entities/ticket.entity';
-import { CreateTicketDto } from './dto/create-ticket.dto';
+import { ClientProxy } from '@nestjs/microservices';
 export declare class TicketsService {
-    private ticketsRepository;
-    private rabbitClient;
-    constructor(ticketsRepository: Repository<Ticket>, rabbitClient: ClientProxy);
-    create(createTicketDto: CreateTicketDto): Promise<Ticket>;
+    private readonly ticketRepository;
+    private client;
+    constructor(ticketRepository: Repository<Ticket>, client: ClientProxy);
+    create(title: string, description: string): Promise<Ticket>;
     findAll(): Promise<Ticket[]>;
 }

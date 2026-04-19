@@ -15,14 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TicketsController = void 0;
 const common_1 = require("@nestjs/common");
 const tickets_service_1 = require("./tickets.service");
-const create_ticket_dto_1 = require("./dto/create-ticket.dto");
 let TicketsController = class TicketsController {
     ticketsService;
     constructor(ticketsService) {
         this.ticketsService = ticketsService;
     }
-    create(createTicketDto) {
-        return this.ticketsService.create(createTicketDto);
+    create(body) {
+        return this.ticketsService.create(body.title, body.description);
     }
     findAll() {
         return this.ticketsService.findAll();
@@ -33,7 +32,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_ticket_dto_1.CreateTicketDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], TicketsController.prototype, "create", null);
 __decorate([

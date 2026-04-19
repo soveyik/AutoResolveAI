@@ -6,5 +6,4 @@ export declare class Ticket {
     priority: string;
     category: string;
     createdAt: Date;
-    updatedAt: Date;
 }

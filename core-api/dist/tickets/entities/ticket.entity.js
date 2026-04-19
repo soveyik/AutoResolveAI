@@ -19,7 +19,6 @@ let Ticket = class Ticket {
     priority;
     category;
     createdAt;
-    updatedAt;
 };
 exports.Ticket = Ticket;
 __decorate([
@@ -35,7 +34,7 @@ __decorate([
     __metadata("design:type", String)
 ], Ticket.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ default: 'PENDING' }),
+    (0, typeorm_1.Column)({ default: 'OPEN' }),
     __metadata("design:type", String)
 ], Ticket.prototype, "status", void 0);
 __decorate([
@@ -43,17 +42,13 @@ __decorate([
     __metadata("design:type", String)
 ], Ticket.prototype, "priority", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)({ default: 'GENERAL' }),
     __metadata("design:type", String)
 ], Ticket.prototype, "category", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], Ticket.prototype, "createdAt", void 0);
-__decorate([
-    (0, typeorm_1.UpdateDateColumn)(),
-    __metadata("design:type", Date)
-], Ticket.prototype, "updatedAt", void 0);
 exports.Ticket = Ticket = __decorate([
     (0, typeorm_1.Entity)('tickets')
 ], Ticket);

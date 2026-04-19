@@ -60,22 +60,35 @@ let AuthService = class AuthService {
         this.jwtService = jwtService;
     }
     async register(fullName, email, passwordPlain) {
-        const saltRounds = 10;
-        const passwordHash = await bcrypt.hash(passwordPlain, saltRounds);
-        const newUser = this.userRepository.create({ fullName, email, passwordHash });
-        await this.userRepository.save(newUser);
-        return { message: "Kullanıcı başarıyla oluşturuldu." };
+        const salt = await bcrypt.genSalt(10);
+        const passwordHash = await bcrypt.hash(passwordPlain, salt);
+        const role = email.toLowerCase().includes('admin') ? 'admin' : 'customer';
+        const user = this.userRepository.create({
+            fullName,
+            email,
+            passwordHash,
+            role
+        });
+        await this.userRepository.save(user);
+        return {
+            message: 'User registered successfully',
+            userId: user.id
+        };
     }
     async login(email, passwordPlain) {
         const user = await this.userRepository.findOne({ where: { email } });
-        if (!user)
-            throw new common_1.UnauthorizedException('Kullanıcı bulunamadı!');
-        const isPasswordMatching = await bcrypt.compare(passwordPlain, user.passwordHash);
-        if (!isPasswordMatching)
-            throw new common_1.UnauthorizedException('Yanlış şifre!');
+        if (!user) {
+            throw new common_1.UnauthorizedException('Invalid credentials');
+        }
+        const isMatch = await bcrypt.compare(passwordPlain, user.passwordHash);
+        if (!isMatch) {
+            throw new common_1.UnauthorizedException('Invalid credentials');
+        }
         const payload = { sub: user.id, email: user.email, role: user.role };
+        const token = this.jwtService.sign(payload);
         return {
-            access_token: await this.jwtService.signAsync(payload),
+            access_token: token,
+            role: user.role
         };
     }
 };

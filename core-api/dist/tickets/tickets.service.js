@@ -14,36 +14,35 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TicketsService = void 0;
 const common_1 = require("@nestjs/common");
-const microservices_1 = require("@nestjs/microservices");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const ticket_entity_1 = require("./entities/ticket.entity");
+const microservices_1 = require("@nestjs/microservices");
 let TicketsService = class TicketsService {
-    ticketsRepository;
-    rabbitClient;
-    constructor(ticketsRepository, rabbitClient) {
-        this.ticketsRepository = ticketsRepository;
-        this.rabbitClient = rabbitClient;
+    ticketRepository;
+    client;
+    constructor(ticketRepository, client) {
+        this.ticketRepository = ticketRepository;
+        this.client = client;
     }
-    async create(createTicketDto) {
-        const newTicket = this.ticketsRepository.create(createTicketDto);
-        const savedTicket = await this.ticketsRepository.save(newTicket);
-        this.rabbitClient.emit('ticket_created', {
-            id: savedTicket.id,
-            title: savedTicket.title,
-            description: savedTicket.description
+    async create(title, description) {
+        const newTicket = this.ticketRepository.create({
+            title,
+            description,
         });
+        const savedTicket = await this.ticketRepository.save(newTicket);
+        this.client.emit('ticket_created', savedTicket);
         return savedTicket;
     }
-    async findAll() {
-        return this.ticketsRepository.find();
+    findAll() {
+        return this.ticketRepository.find({ order: { createdAt: 'DESC' } });
     }
 };
 exports.TicketsService = TicketsService;
 exports.TicketsService = TicketsService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(ticket_entity_1.Ticket)),
-    __param(1, (0, common_1.Inject)('AI_SERVICE')),
+    __param(1, (0, common_1.Inject)('BACKGROUND_WORKER')),
     __metadata("design:paramtypes", [typeorm_2.Repository,
         microservices_1.ClientProxy])
 ], TicketsService);

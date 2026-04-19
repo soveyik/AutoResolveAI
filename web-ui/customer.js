@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "index.html";
     }
 
-    const API_URL = "http://localhost:3000/tickets";
+    const API_URL = "http://127.0.0.1:3000/tickets";
     const form = document.getElementById("ticket-form");
     const submitBtn = document.getElementById("submit-btn");
     const successMsg = document.getElementById("success-msg");
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const description = document.getElementById("description").value;
 
         submitBtn.disabled = true;
-        submitBtn.textContent = "Submitting...";
+        submitBtn.textContent = "Gönderiliyor...";
         successMsg.style.display = "none";
 
         try {
@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => { successMsg.style.display = "none"; }, 3000);
             }
         } catch (error) {
-            alert("Error submitting ticket.");
+            alert("Bilet gönderilirken bir hata oluştu.");
         } finally {
             submitBtn.disabled = false;
-            submitBtn.textContent = "Submit Ticket";
+            submitBtn.textContent = "Bileti Gönder";
         }
     });
 });
