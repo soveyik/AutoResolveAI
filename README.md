@@ -17,16 +17,51 @@ A distributed support ticketing system built with Node.js, Python, PostgreSQL, a
 
 ---
 
-## 🏗️ Sistem Mimarisi (System Architecture)
+## 🏗️ Sistem Mimarisi & Dokümantasyon
+
+Detaylı teknik mimari tasarımı ve ölçeklenebilirlik kararları için [Sistem Mimarisi Dokümanı](docs/architecture_design.md) dosyasını inceleyebilirsiniz.
 
 ![Sistem Mimarisi](docs/images/system_architecture.png)
 
 ---
 
+## 📂 Proje Yapısı (Project Structure)
+
+```text
+AutoResolve/
+├── ai-service/             # Python (FastAPI) AI Worker & NLP Duygu Analizi Servisi
+│   ├── main.py
+│   ├── nlp_model.py
+│   ├── worker.py
+│   └── requirements.txt
+├── core-api/               # Node.js (NestJS) Core REST API Servisi
+│   ├── src/
+│   ├── package.json
+│   └── tsconfig.json
+├── docs/                   # Dokümantasyon ve Görseller
+│   ├── architecture_design.md
+│   └── images/
+│       ├── admin_dashboard.png
+│       ├── customer_dashboard.png
+│       ├── login_page.png
+│       └── system_architecture.png
+├── web-ui/                 # Client Web UI (Modern SPA Arayüzü)
+│   ├── index.html
+│   ├── admin.html
+│   ├── customer.html
+│   ├── preview_admin.html
+│   └── style.css
+├── docker-compose.yml      # PostgreSQL, Redis & RabbitMQ Konfigürasyonu
+├── .gitignore              # Proje Geneli Git İhmal Kuralları
+└── README.md               # Proje Açıklaması ve Kurulum Rehberi
+```
+
+---
+
 ## ✨ Özellikler (Features)
-- **NestJS Core API**: Handles CRUD operations and user authentication (JWT).
-- **FastAPI AI Worker**: Consumes RabbitMQ events and processes ticket sentiment asynchronously.
-- **Vanilla JS Client**: A lightweight, modern SPA client for demonstrating the event-driven architecture.
+- **NestJS Core API**: CRUD operasyonları, yetkilendirme (JWT) ve iş lojiği yönetimi.
+- **FastAPI AI Worker**: RabbitMQ kuyruğundaki biletleri asenkron tüketerek HuggingFace NLP modeliyle duygu analizi ve kategorizasyon yapar.
+- **Vanilla JS Client**: Event-driven mimariyi ve canlı durum güncellemelerini gösteren hafif modern SPA arayüzü.
 
 ---
 
@@ -57,4 +92,5 @@ python main.py
 
 ### 4. Kullanıcı Arayüzü (Web UI)
 Tarayıcınızda `web-ui/index.html` dosyasını açın.
+
 
