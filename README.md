@@ -1,16 +1,39 @@
-# AutoResolve - Event-Driven Support Ticketing System
+# AutoResolve - AI-Destekli Akıllı Müşteri Destek ve Biletleme Sistemi
 
 A distributed support ticketing system built with Node.js, Python, PostgreSQL, and RabbitMQ. Features an asynchronous NLP pipeline to auto-categorize incoming tickets using HuggingFace.
 
-## Features
+---
+
+## 🎨 Ekran Görüntüleri (UI Screenshots)
+
+### 1. Destek Temsilcisi Paneli (AI NLP Duygu Analizi & Bilet Önceliklendirme Kuyruğu)
+![Destek Temsilcisi Paneli](docs/images/admin_dashboard.png)
+
+### 2. Müşteri Portalı (Yeni Bilet Oluşturma)
+![Müşteri Portalı](docs/images/customer_dashboard.png)
+
+### 3. Kullanıcı Giriş & Kayıt Ekranı
+![Giriş Ekranı](docs/images/login_page.png)
+
+---
+
+## 🏗️ Sistem Mimarisi (System Architecture)
+
+![Sistem Mimarisi](docs/images/system_architecture.png)
+
+---
+
+## ✨ Özellikler (Features)
 - **NestJS Core API**: Handles CRUD operations and user authentication (JWT).
 - **FastAPI AI Worker**: Consumes RabbitMQ events and processes ticket sentiment asynchronously.
-- **Vanilla JS Client**: A lightweight, modern SI client for demonstrating the event-driven architecture.
+- **Vanilla JS Client**: A lightweight, modern SPA client for demonstrating the event-driven architecture.
 
-## Installation
+---
 
-### 1. Infrastructure
-Run the following to start PostgreSQL, Redis, and RabbitMQ.
+## 🚀 Kurulum (Installation)
+
+### 1. Altyapı (Infrastructure)
+PostgreSQL, Redis ve RabbitMQ servislerini başlatın:
 ```bash
 docker-compose up -d
 ```
@@ -21,7 +44,7 @@ cd core-api
 npm install
 npm run start:dev
 ```
-Runs on `http://localhost:3000`.
+`http://localhost:3000` adresinde çalışır.
 
 ### 3. AI Worker (Python)
 ```bash
@@ -32,5 +55,6 @@ pip install -r requirements.txt
 python main.py
 ```
 
-### 4. Client Web UI
-Open `web-ui/index.html` in your browser.
+### 4. Kullanıcı Arayüzü (Web UI)
+Tarayıcınızda `web-ui/index.html` dosyasını açın.
+
