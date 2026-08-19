@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Müşteri Paneli - AutoResolve</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-background">
+    <nav class="glass-navbar">
+      <div class="logo-box">
+        <h1>AutoResolve</h1>
+      </div>
+      <div class="user-profile">
+        <span>Müşteri Portal (ahmet.yilmaz@firma.com)</span>
+        <button id="logout-btn" class="icon-button" style="margin-left:1rem; border-color: #ef4444; color: #ef4444;">Çıkış Yap</button>
+      </div>
+    </nav>
+    <main class="dashboard-container" style="justify-content: center;">
+      <section class="glass-panel create-panel" style="max-width: 650px; flex: none; width: 100%;">
+        <h2>Yeni Destek Bileti Oluştur</h2>
+        <p class="subtitle">Sorununuzu kısaca anlatın. AI modelimiz biletinizi otomatik olarak önceliklendirip ilgili ekibe iletecektir.</p>
+        <form id="ticket-form">
+          <div class="input-group">
+            <label for="title">Konu Başlığı</label>
+            <input type="text" id="title" value="Ödeme Ekranında 500 Server Error Hatası" required>
+          </div>
+          <div class="input-group">
+            <label for="description">Detaylı Açıklama</label>
+            <textarea id="description" rows="5" required>Müşteriler sepeti onayladıktan sonra ödeme adımına geçildiğinde sistem 500 Internal Server Error hatası döndürüyor. Sipariş akışı tamamen durdu, acil müdahale talep ediyoruz.</textarea>
+          </div>
+          <button type="submit" class="glow-button" id="submit-btn" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+            Bileti Gönder ve AI İle Önceliklendir
+          </button>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

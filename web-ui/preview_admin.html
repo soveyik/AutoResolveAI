@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yönetim Paneli - AutoResolve</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-background">
+    <nav class="glass-navbar">
+      <div class="logo-box">
+        <h1>AutoResolve</h1>
+      </div>
+      <div class="user-profile">
+        <span style="color: var(--accent-blue); font-weight:bold;">Destek Temsilci Paneli</span>
+        <button id="logout-btn" class="icon-button" style="margin-left:1rem; border-color: #ef4444; color: #ef4444;">Çıkış Yap</button>
+      </div>
+    </nav>
+    <main class="dashboard-container">
+      <section class="glass-panel analytics-panel" style="flex: 1;">
+        <div class="analytics-header">
+          <h2>Aktif AI Önceliklendirilmiş Bilet Kuyruğu (<span id="ticket-count">4</span>)</h2>
+          <button id="refresh-btn" class="icon-button glow-button" style="width: auto; margin:0;">Tümünü Yenile ↻</button>
+        </div>
+        <div class="ticket-list-wrapper">
+          <ul id="ticket-list" class="ticket-list">
+            
+            <li class="ticket-card urgency-high">
+              <div class="card-header">
+                <h3>Ödeme Ekranında 500 Server Error Hatası</h3>
+                <span class="badge badge-urgent">URGENT</span>
+              </div>
+              <p class="card-body">"Müşteriler sepeti onayladıktan sonra ödeme adımına geçildiğinde sistem 500 Internal Server Error hatası döndürüyor. Sipariş akışı tamamen durdu, acil müdahale talep ediyoruz."</p>
+              <div class="card-footer">
+                <span>Bilet No: #a8f9c23d</span>
+                <span>AI NLP Duygu Analizi: %98 Kritik / Olumsuz</span>
+                <span>Tarih: 19.08.2026 22:30:15</span>
+              </div>
+            </li>
+
+            <li class="ticket-card urgency-high">
+              <div class="card-header">
+                <h3>Veritabanı Bağlantı Zaman Aşımı (Database Timeout)</h3>
+                <span class="badge badge-urgent">URGENT</span>
+              </div>
+              <p class="card-body">"AI Worker servisi PostgreSQL connection pool aşımı uyarısı verdi. Kuyrukta bekleyen 150 bilet işlenemiyor."</p>
+              <div class="card-footer">
+                <span>Bilet No: #c9d8812e</span>
+                <span>AI NLP Duygu Analizi: %95 Kritik / Sistem Arızası</span>
+                <span>Tarih: 19.08.2026 20:45:00</span>
+              </div>
+            </li>
+
+            <li class="ticket-card urgency-normal">
+              <div class="card-header">
+                <h3>Kullanıcı Profil Resimleri Yüklenmiyor</h3>
+                <span class="badge badge-normal">NORMAL</span>
+              </div>
+              <p class="card-body">"Profil güncellerken avatar resmi yükleme alanında yükleniyor simgesi takılı kalıyor."</p>
+              <div class="card-footer">
+                <span>Bilet No: #b4e112fa</span>
+                <span>AI NLP Duygu Analizi: %40 Düşük / Arayüz Sorusu</span>
+                <span>Tarih: 19.08.2026 21:15:40</span>
+              </div>
+            </li>
+
+            <li class="ticket-card urgency-normal">
+              <div class="card-header">
+                <h3>Fatura Şablonuna KDV Oranı Ekleme Talebi</h3>
+                <span class="badge badge-normal">NORMAL</span>
+              </div>
+              <p class="card-body">"Kurumsal müşterilerimiz için PDF fatura çıktısında KDV detaylarının ayrıca sütun halinde gösterilmesini istiyoruz."</p>
+              <div class="card-footer">
+                <span>Bilet No: #d3a4597b</span>
+                <span>AI NLP Duygu Analizi: %15 Nötr / Özellik Talebi</span>
+                <span>Tarih: 19.08.2026 19:10:05</span>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
